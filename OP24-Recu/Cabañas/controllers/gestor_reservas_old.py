@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """
+Módulo Gestor de Reservas
 Luna Juan Marcelo
 DNI 24234578
-@author: elpocitano@gmail.com
-3. Una clase Gestor de reservas que almacene instancias de la clase Reserva. Cada una de estas
-instancias se creará con los datos registrados en el archivo “Reservas.csv”. Este gestor debe
-basarse en una lista Python.
+elpocitano@gmail.com
+
+Este módulo proporciona la clase GestorReservas, que se encarga de administrar
+las reservas de cabañas para el complejo "El Soleado".
+
+Funcionalidades:
+- Carga las reservas desde un archivo CSV.
+- Permite buscar reservas por número de cabaña.
+- Lista las reservas para una fecha específica.
+
 """
-from reserva import Reserva
-import csv
+
+from models.reserva import Reserva
 
 
 class GestorReservas:

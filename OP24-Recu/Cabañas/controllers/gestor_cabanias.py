@@ -8,9 +8,8 @@ instancias se creará con los datos registrados en el archivo “Cabañas.csv”
 basarse en un arreglo Numpy teniendo en cuenta que el complejo tiene 10 cabañas.
 
 """
-from cabania import Cabania
-from gestor_reservas import GestorReservas as GR
-import csv
+from models.cabania import Cabania
+from controllers.gestor_reservas import GestorReservas
 import numpy as np
 
 
@@ -33,7 +32,8 @@ class GestorCabanias:
         self.__arre_cabanias[self.__cantidad] = cabania
         self.__cantidad += 1
 
-    def cargar_archivo_cabanias(self, csv_file="Cabañas.csv"):
+    def cargar_archivo_cabanias(self):
+        csv_file="../data/Cabañas.csv"
         with open(csv_file) as csv_handler:
             next(csv_handler)
             for fila in csv_handler:
@@ -59,11 +59,11 @@ class GestorCabanias:
 
 
 if __name__ == "__main__":
-    GR = GR()
-    GR.cargar_archivo_reservas("Reservas.csv")
+    GR = GestorReservas()
+    GR.cargar_archivo_reservas()
 
     GC = GestorCabanias()
-    GC.cargar_archivo_cabanias("Cabañas.csv")
+    GC.cargar_archivo_cabanias()
     GC.listar_cabanias()
 
     print("Ordena la lista")

@@ -12,10 +12,9 @@ Cabaña y usar la sobrecarga definida.
            La capacidad de una cabaña se calcula como:
 capacidad de una cabaña = cantidad de camas grandes * 2 + cantidad de camas chicas.
 """
-from cabania import Cabania
-from reserva import Reserva
-from gestor_reservas import GestorReservas
-from gestor_cabanias import GestorCabanias
+import os
+from controllers.gestor_cabanias import GestorCabanias
+from controllers.gestor_reservas import GestorReservas
 
 
 def menu():
@@ -38,10 +37,19 @@ igual a la ingresada"""
 
 
 if __name__ == "__main__":
+    """
+    # Obtener la ruta del directorio del script actual
+    current_dir = os.path.dirname(__file__)
+    
+    # Construir la ruta a los archivos CSV utilizando el directorio actual o raiz
+    archivo_cabania = os.path.join(current_dir, "../data/Cabaña.csv")
+    archivo_reserva = os.path.join(current_dir, "../data/Reserva.csv")
+    """
+
     GC = GestorCabanias()
-    GC.cargar_archivo_cabanias("Cabañas.csv")
+    GC.cargar_archivo_cabanias()
     GR = GestorReservas()
-    GR.cargar_archivo_reservas("Reservas.csv")
+    GR.cargar_archivo_reservas()
 
     while True:
         menu()
@@ -54,4 +62,4 @@ if __name__ == "__main__":
         elif opcion == 2:
             opcion02(GC, GR)
         else:
-            print("Opcion ivalida, ingrese nuevamente")
+            print("Opcion invalida, ingrese nuevamente")
