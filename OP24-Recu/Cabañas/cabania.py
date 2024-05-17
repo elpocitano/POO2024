@@ -25,21 +25,25 @@ class Cabania:
     def __str__(self):
         return f"{self.__num} {self.__ctdad_hab} {self.__camas_gdes} {self.__camas_chicas} {self.__imp_dia}"
 
-    def get_num(self):
+    def get_num(self) -> int:
         return self.__num
 
-    def get_imp_dia(self):
+    def get_imp_dia(self) -> float:
         return self.__imp_dia
 
     def __lt__(self, other):
         return self.__num < other.get_num()  # Ordena por número de cabaña
 
-    def get_capacidad(self):
-        capacidad = ((self.__camas_gdes * 2) + self.__camas_chicas)
+    def get_capacidad(self) -> int:
+        capacidad: int = (int(self.__camas_gdes) * 2) + int(self.__camas_chicas)
         return capacidad
 
-    def __ge__(self, other):
-        return self.get_capacidad() >= other.get_capacidad()
+    def __ge__(self, huespedes):
+        es_mayor = False
+        if isinstance(huespedes, int):
+            int(self.get_capacidad()) >= huespedes
+            es_mayor = True
+        return es_mayor
 
 
 if __name__ == "__main__":

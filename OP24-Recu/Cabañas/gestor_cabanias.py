@@ -50,14 +50,25 @@ class GestorCabanias:
         for i in range(self.__cantidad):
             print(self.__arre_cabanias[i])
 
-    def get_num_cabania_x_capacidad(self, num_huespedes):
+    def listar_cabanias_libres_x_capacidad(self, num_huespedes, GR):
         for cabania in self.__arre_cabanias[:self.__cantidad]:
-            if cabania.get_capacidad() >= num_huespedes:
-                num_cabania = cabania.get_num()
+            if cabania >= num_huespedes:
+                num_cabania = int(cabania.get_num())
+                if GR.buscar_num_cab_reservas(num_cabania) == -1:
+                    print(f"Cabaña num {cabania.get_num()} capacidad {cabania.get_capacidad()} disponible.")
+
 
 if __name__ == "__main__":
+    GR = GR()
+    GR.cargar_archivo_reservas("Reservas.csv")
+
     GC = GestorCabanias()
     GC.cargar_archivo_cabanias("Cabañas.csv")
     GC.listar_cabanias()
+
+    print("Ordena la lista")
     GC.ordenar_lista_cabanias()
     GC.listar_cabanias()
+    print("listar_cabanias_libres_x_capacidad(4).")
+    GC.listar_cabanias_libres_x_capacidad(4, GR)
+    #GC.listar_cabanias_libres_x_capacidad(4, GR)
