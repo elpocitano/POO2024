@@ -10,6 +10,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\OP24-Recu\Cabañas\Cabañas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\OP24-Recu\Cabañas\Reservas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\OP24_tema02_FarmaCiudad\ClientesFarmaCiudad.csv">
           <value>
             <Attribute>
