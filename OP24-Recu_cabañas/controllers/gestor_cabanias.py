@@ -32,8 +32,8 @@ class GestorCabanias:
         self.__arre_cabanias[self.__cantidad] = cabania
         self.__cantidad += 1
 
-    def cargar_archivo_cabanias(self):
-        csv_file="../data/Cabañas.csv"
+    def cargar_archivo_cabanias(self, csv_file):
+        # csv_file="../data/Cabañas.csv"
         with open(csv_file) as csv_handler:
             next(csv_handler)
             for fila in csv_handler:

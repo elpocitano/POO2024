@@ -40,16 +40,47 @@ if __name__ == "__main__":
     """
     # Obtener la ruta del directorio del script actual
     current_dir = os.path.dirname(__file__)
-    
-    # Construir la ruta a los archivos CSV utilizando el directorio actual o raiz
-    archivo_cabania = os.path.join(current_dir, "../data/Cabaña.csv")
-    archivo_reserva = os.path.join(current_dir, "../data/Reserva.csv")
+    print(f"Directorio actual: {current_dir}")
+
+    # Construir la ruta a los archivos CSV utilizando el directorio actual y subiendo un nivel
+    print(os.path.abspath(current_dir))
+    archivo_cabanias = os.path.abspath(os.path.normpath(os.path.join(current_dir, "../data/Cabañas.csv")))
+    archivo_reservas = os.path.abspath(os.path.normpath(os.path.join(current_dir, "../data/Reservas.csv")))
+
+    print(f"Ruta de archivo de cabañas: {archivo_cabanias}")
+    print(f"Ruta de archivo de reservas: {archivo_reservas}")
+
+    # Verificar si los archivos existen
+    if not os.path.exists(archivo_cabanias):
+        print(f"Error: El archivo de cabañas no existe en la ruta: {archivo_cabanias}")
+    if not os.path.exists(archivo_reservas):
+        print(f"Error: El archivo de reservas no existe en la ruta: {archivo_reservas}")
     """
 
+    # Obtenemos la ruta al directorio actual del script py
+
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+
+    # Especificamos las rutas a los arcivhos csv, uniendo las carpetas y archivo final
+
+    archivo_cabanias = os.path.join(base_dir, "data", "Cabañas.csv")
+
+    archivo_reservas = os.path.join(base_dir, "data", "Reservas.csv")
+
+    # Verificamos que los archivos existan (y obvio, las rutas)
+
+    if not os.path.exists(archivo_cabanias):
+        print(f"Error: El archivo de cabañas no existe en la ruta: {archivo_cabanias}")
+
+    if not os.path.exists(archivo_reservas):
+        print(f"Error: El archivo de reservas no existe en la ruta: {archivo_reservas}")
+
+    # Procedemos a cargar los archivos
+
     GC = GestorCabanias()
-    GC.cargar_archivo_cabanias()
+    GC.cargar_archivo_cabanias(archivo_cabanias)
     GR = GestorReservas()
-    GR.cargar_archivo_reservas()
+    GR.cargar_archivo_reservas(archivo_reservas)
 
     while True:
         menu()
